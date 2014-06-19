@@ -1,0 +1,7 @@
+DEPENDENCES=gstreamer_log.o stream.o  text.o send_video.o stun.o detect.o servo.o
+SOURCES=gstreamer_log.c send_video.c stun.c text.c stream.c detect.c servo.c
+
+P2P_Stream: 
+	gcc -Wall -c $(SOURCES) -lwiringPi `pkg-config --cflags --libs nice gstreamer-1.0`
+	ld -r  $(DEPENDENCES) -o P2P_Stream.o
+	rm -rf $(DEPENDENCES)
